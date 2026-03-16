@@ -8,13 +8,15 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-      - name: Download latest index.html
+
+      - name: Fetch latest index.html from Gist
         run: |
-          curl -o index.html "${{ github.event.inputs.url }}"
+          curl -L "https://gist.githubusercontent.com/Dikshant-008/c1dba97563f61c14c7ed95d9e2e154e2/raw/index.html" -o index.html
+          echo "Downloaded $(wc -c < index.html) bytes"
+
       - name: Commit and push
         run: |
           git config user.email "deploy@tradeindia.com"
-          git config user.name "TradeIndia Deploy"
+          git config user.name "TradeIndia Deploy Bot"
           git add index.html
-          git commit -m "Auto-deploy update" || echo "No changes"
-          git push
+          git diff --staged --quiet && echo "No changes to deploy" || (git commit -m "Auto-deploy: update index.html" && git push)
