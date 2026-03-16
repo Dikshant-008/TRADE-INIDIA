@@ -570,27 +570,20 @@ const WORKER_URL = 'https://curly-mouse-0d68.dikshantchhalani2-0.workers.dev';
 
 
 async function loadPrices(){
-  // Market closed — use cache, don't fetch
-  if(!isOpen()){
-    const hasCached=Object.keys(_savedPrices).length>0;
-    if(hasCached){
-      STOCKS.forEach(s=>{
-        if(!cache[s.sym]||cache[s.sym].price===0){
-          const sv=_savedPrices[s.sym];
-          if(sv) cache[s.sym]={price:sv.price,prevClose:sv.prevClose||sv.price,
-            change:parseFloat(((sv.price-(sv.prevClose||sv.price))/(sv.prevClose||sv.price)*100).toFixed(2)),
-            high52:sv.high52||sv.price*1.28,low52:sv.low52||sv.price*0.72,live:false,src:'cached'};
-        }
-      });
-      document.getElementById('pfill').style.width='100%';
-      document.getElementById('pdot').className='dot dr';
-      document.getElementById('ptxt').textContent=`Market closed · ${Object.keys(_savedPrices).length} prices cached from last session`;
-      document.getElementById('src-badge').textContent=`${Object.keys(_savedPrices).length} cached`;
-      document.getElementById('src-badge').style.color='#60a5fa';
-      document.getElementById('lupd').textContent='Closed · '+getIST();
-      renderAll();return;
+  // Apply any cached prices immediately for instant display
+  STOCKS.forEach(s=>{
+    if(!cache[s.sym]||cache[s.sym].price===0){
+      const sv=_savedPrices[s.sym];
+      if(sv) cache[s.sym]={price:sv.price,prevClose:sv.prevClose||sv.price,
+        change:parseFloat(((sv.price-(sv.prevClose||sv.price))/(sv.prevClose||sv.price)*100).toFixed(2)),
+        high52:sv.high52||sv.price*1.28,low52:sv.low52||sv.price*0.72,live:false,src:'cached'};
     }
-  }
+  });
+  renderAll();
+
+  // Always fetch fresh prices from NSE — even when market is closed
+  // This ensures we always have the latest closing price, not stale cached data
+  // After fetch completes, market closed = prices freeze until market reopens
 
   // ── ONE request fetches ALL stocks via NSE India scanner ──
   document.getElementById('pdot').className='dot dy';
@@ -622,10 +615,11 @@ async function loadPrices(){
       Object.assign(_savedPrices,freshPrices);
     }
 
-    const src=liveC>0?data[Object.keys(data)[0]]?.src||'TradingView':'fallback';
+    const src=liveC>0?data[Object.keys(data)[0]]?.src||'NSE India':'fallback';
+    const mktOpen=isOpen();
     document.getElementById('pfill').style.width='100%';
-    document.getElementById('pdot').className='dot '+(liveC>tot*0.8?'dg':'dy');
-    document.getElementById('ptxt').textContent=`${liveC}/${tot} live · ${src} · ${getIST()}`;
+    document.getElementById('pdot').className='dot '+(mktOpen&&liveC>tot*0.8?'dg':'dr');
+    document.getElementById('ptxt').textContent=mktOpen?`${liveC}/${tot} live · ${src} · ${getIST()}`:`Market closed · ${liveC} prices fetched from NSE · ${getIST()}`;
     document.getElementById('src-badge').textContent=liveC>tot*0.8?`${liveC} live`:`${liveC} live/${tot-liveC} cached`;
     document.getElementById('src-badge').style.color=liveC>tot*0.8?'#22c55e':'#f5a623';
     document.getElementById('lupd').textContent='Updated '+getIST();
