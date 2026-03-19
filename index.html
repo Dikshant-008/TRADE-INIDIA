@@ -7,6 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="description" content="TradeIndia — Free Indian Stock Market Paper Trading Simulator. Practice NSE/BSE trading with ₹10,000 virtual money."/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; frame-src https://s.tradingview.com https://*.tradingview.com https://www.tradingview.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://s3.tradingview.com https://s.tradingview.com https://cdn.jsdelivr.net; connect-src *;">
   <title>TradeIndia — Paper Trading</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
@@ -44,8 +45,8 @@
     .fbtn{padding:4px 10px;border-radius:4px;font-size:10px;background:#0e1526;border:1px solid #1a2235;color:#a0b8d8;cursor:pointer;font-family:inherit;touch-action:manipulation}
     .fbtn.act{background:#1a2a4a;border-color:#4f8ef7;color:#4f8ef7}
     .tbl{width:100%;border-collapse:collapse;font-size:11px}
-    .tbl th{color:#7a94b8;font-size:9px;letter-spacing:1px;padding:6px 8px;text-align:left;border-bottom:1px solid #1a2235;background:#0b0f1c;position:sticky;top:0}
-    .tbl td{padding:8px 8px;border-bottom:1px solid #0d1220;vertical-align:middle}
+    .tbl th{color:#7a94b8;font-size:9px;letter-spacing:1px;padding:6px 6px;text-align:left;border-bottom:1px solid #1a2235;background:#0b0f1c;position:sticky;top:0}
+    .tbl td{padding:6px 6px;border-bottom:1px solid #0d1220;vertical-align:middle}
     .tbl tr:hover td{background:#0d1220}
     .sn{font-weight:700;font-size:12px;color:#e2e8f0}
     .sf{font-size:11px;color:#a0b4d0;margin-top:3px;letter-spacing:0.2px}
@@ -55,13 +56,13 @@
     .sbdg{display:inline-block;padding:1px 6px;border-radius:8px;font-size:9px;background:#0e1a2e;color:#60a5fa;border:1px solid #1e3560}
     .btn{padding:6px 12px;border-radius:4px;border:none;cursor:pointer;font-size:11px;font-weight:700;font-family:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
     .bbuy{background:#22c55e;color:#031a0e}.bsell{background:#ef4444;color:#fff}.blimit{background:#1a2a4a;color:#60a5fa;border:1px solid #1e3560}
-    .tw{max-height:50vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+    .tw{overflow-x:hidden}
     .mov{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:1000;align-items:flex-end;justify-content:center}
     .mov.open{display:flex}
-    .mod{background:#0e1526;border:1px solid #2a3d5e;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+    .mod{background:#0c1220;border:1px solid #2a3d5e;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
     .mod h3{font-size:14px;margin-bottom:12px;color:#e2e8f0}
     .mr{display:flex;justify-content:space-between;margin-bottom:7px;font-size:11px}
-    .mk{color:#7a94b8}.mv{font-weight:700}
+    .mk{color:#7a94b8}.mv{font-weight:700;color:#e2e8f0}
     .qi{width:100%;background:#07090f;border:1px solid #1a2235;border-radius:5px;padding:10px 12px;color:#c9d1e0;font-size:16px;font-family:inherit;margin:8px 0;outline:none;-webkit-appearance:none}
     .qi:focus{border-color:#4f8ef7}
     .cbox{background:#07090f;border:1px solid #1a2235;border-radius:6px;padding:11px;margin:8px 0;font-size:11px}
@@ -84,7 +85,7 @@
     .otype{display:flex;gap:0;margin:10px 0;border:1px solid #1a2235;border-radius:6px;overflow:hidden}
     .otype-btn{flex:1;padding:10px;font-size:11px;font-weight:700;border:none;cursor:pointer;font-family:inherit;background:#07090f;color:#4a5878;letter-spacing:.5px;touch-action:manipulation}
     .otype-btn.active{background:#1a2a4a;color:#4f8ef7}
-    .limit-info{background:#0a1628;border:1px solid #1e3560;border-radius:6px;padding:10px;font-size:10px;color:#60a5fa;margin:6px 0;line-height:1.7}
+    .limit-info{background:#0a1628;border:1px solid #1e3560;border-radius:6px;padding:10px;font-size:11px;color:#93c5fd;margin:6px 0;line-height:1.8}
     .lo-row{padding:10px 0;border-bottom:1px solid #0d1220;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
     .lo-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
     .lo-pending{background:#1a2a0a;color:#86efac;border:1px solid #2a4a1a}
@@ -105,6 +106,11 @@
     @media(max-width:360px){
       .g3{grid-template-columns:1fr}
     }
+    /* Charts */
+    .chart-qp-btn{padding:6px 12px;background:#0e1526;border:1px solid #1a2235;border-radius:4px;color:#a0b8d8;font-size:11px;cursor:pointer;font-family:inherit;touch-action:manipulation;transition:all .15s}
+    .chart-qp-btn:hover,.chart-qp-btn:active{background:#1a2a4a;border-color:#4f8ef7;color:#4f8ef7}
+    .chart-srch-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid #0d1220;display:flex;justify-content:space-between;align-items:center}
+    .chart-srch-item:hover{background:#0d1220}
     /* PWA install prompt */
     .install-bar{background:#1a2a4a;border-bottom:1px solid #1e3560;padding:8px 14px;font-size:11px;color:#60a5fa;display:flex;align-items:center;justify-content:space-between;gap:8px}
     .install-bar button{background:#4f8ef7;color:#020c1a;border:none;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
@@ -142,6 +148,7 @@
   <button class="nb" onclick="showSec('limitorders',this)">LIMITS <span id="lo-nav-badge" style="background:#1a2a4a;color:#60a5fa;padding:1px 5px;border-radius:8px;font-size:9px;margin-left:3px">0</span></button>
   <button class="nb" onclick="showSec('history',this)">HISTORY</button>
   <button class="nb" onclick="showSec('charges',this)">CHARGES</button>
+  <button class="nb" onclick="showSec('charts',this)" style="color:#f5a623;border-bottom:2px solid transparent" id="charts-nav-btn">📈 CHARTS</button>
   <button class="nb" onclick="openSearch()" style="margin-left:auto;padding:9px 14px" title="Search stocks">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8ba4c8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -185,7 +192,7 @@
     <div class="filters" id="filters" style="display:none"></div>
     <div class="tw">
       <table class="tbl">
-        <thead><tr><th>STOCK</th><th>PRICE</th><th>CHG%</th><th>PREV CLOSE</th><th>52W H/L</th><th>SECTOR</th><th>ACTIONS</th></tr></thead>
+        <thead><tr><th>STOCK</th><th>PRICE</th><th>CHG%</th><th>SECTOR</th><th>ACTIONS</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
@@ -250,6 +257,50 @@
   </div>
 </div>
 
+<!-- ── CHARTS ── -->
+<div class="sec" id="sec-charts">
+  <div class="card" style="margin-bottom:12px;padding:12px">
+
+    <!-- Search + stock info header -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+      <div style="position:relative;flex:1;min-width:200px">
+        <input id="chart-search" class="srch" type="text" placeholder="Search stock... e.g. RELIANCE, TCS"
+          oninput="filterChartSearch()" style="padding-left:34px;margin:0"/>
+        <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%)" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a5878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <div id="chart-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;background:#0e1526;border:1px solid #1a2235;border-top:none;border-radius:0 0 6px 6px;z-index:100;max-height:220px;overflow-y:auto;-webkit-overflow-scrolling:touch"></div>
+      </div>
+      <div id="chart-stock-header" style="display:none;text-align:right">
+        <div style="font-size:14px;font-weight:700;color:#e2e8f0" id="chart-sym-label"></div>
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-top:2px">
+          <span id="chart-price-label" style="font-size:13px;font-weight:700"></span>
+          <span id="chart-chg-label" style="font-size:11px;padding:1px 6px;border-radius:3px"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TradingView Advanced Chart Widget -->
+    <div id="chart-placeholder" style="text-align:center;padding:56px 16px">
+      <div style="font-size:48px;margin-bottom:14px">📈</div>
+      <div style="font-size:14px;color:#6b7fa8;margin-bottom:6px">Search any stock above to open its chart</div>
+      <div style="font-size:11px;color:#3a4a60">Live candlestick chart · All timeframes · Technical indicators · Powered by TradingView</div>
+    </div>
+
+    <div id="tv-chart-container" style="display:none;border-radius:8px;overflow:hidden;border:1px solid #1a2235">
+      <div id="tradingview_chart"></div>
+    </div>
+
+  </div>
+
+  <!-- Quick picks -->
+  <div class="card">
+    <div class="ct" style="margin-bottom:10px">QUICK PICKS — TAP TO CHART</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px" id="chart-quick-picks">
+    </div>
+  </div>
+</div>
+
 </div><!-- end main -->
 </div><!-- end app -->
 
@@ -266,7 +317,7 @@
       <button class="otype-btn" id="ot-stoploss" onclick="setOrderType('stoploss')">🛑 STOP LOSS</button>
     </div>
     <div class="mr"><span class="mk">Stock</span><span class="mv w" id="m-sn">-</span></div>
-    <div class="mr"><span class="mk">Current Price</span><span class="mv" id="m-price">-</span></div>
+    <div class="mr"><span class="mk">Current Price</span><span class="mv" id="m-price" style="color:#f5a623;font-size:14px;font-weight:700">-</span></div>
     <div class="mr"><span class="mk">Balance</span><span class="mv g" id="m-bal">-</span></div>
     <div class="mr" id="m-hr" style="display:none"><span class="mk">You Hold</span><span class="mv b" id="m-hold">-</span></div>
 
@@ -529,6 +580,11 @@ const STOCKS=[
   {sym:'FINEORG',     full:'Fine Organic Industries',      sec:'Chemicals',    bp:4277},
   {sym:'CLEAN',       full:'Clean Science & Tech',         sec:'Chemicals',    bp:1261},
   {sym:'PCBL',        full:'PCBL Ltd',                     sec:'Chemicals',    bp:345},
+
+  // ── COMMODITIES (via ETFs) ─────────────────────────────────────────────
+  {sym:'GOLDBEES',    full:'Gold ETF (Nippon Gold BeES)',   sec:'Commodity',    bp:9120},
+  {sym:'SILVERBEES',  full:'Silver ETF (Nippon Silver BeES)',sec:'Commodity',   bp:935},
+  {sym:'CPSEETF',     full:'CPSE ETF (PSU Basket)',         sec:'Commodity',    bp:85},
 ];
 
 let balance=10000,portfolio={},tradeHist=[],cache={},limitOrders=[],tradeState=null,activeFilter='All',orderType='market';
@@ -740,8 +796,8 @@ function updLimitInfoBox(){
   if(!tradeState) return;
   const price=cache[tradeState.sym]?.price||0;
   document.getElementById('limit-info-box').innerHTML=tradeState.type==='buy'
-    ?`<span class="y">▲ LIMIT BUY</span> — Current: <span class="w">${fmtP(price)}</span>. Will execute when price <span class="g">drops to or below</span> your target. Set target below ${fmtP(price)}.`
-    :`<span class="r">▼ LIMIT SELL</span> — Current: <span class="w">${fmtP(price)}</span>. Will execute when price <span class="g">rises to or above</span> your target. Set target above ${fmtP(price)}.`;
+    ?`<span style="color:#f5a623;font-weight:700">▲ LIMIT BUY</span> — Current: <span style="color:#f5a623;font-weight:700">${fmtP(price)}</span>. Executes when price <span style="color:#22c55e;font-weight:700">drops to or below</span> your target. Set below ${fmtP(price)}.`
+    :`<span style="color:#ef4444;font-weight:700">▼ LIMIT SELL</span> — Current: <span style="color:#f5a623;font-weight:700">${fmtP(price)}</span>. Executes when price <span style="color:#22c55e;font-weight:700">rises to or above</span> your target. Set above ${fmtP(price)}.`;
 }
 
 function openModal(sym,type){
@@ -760,7 +816,7 @@ function openModal(sym,type){
   document.getElementById('l-price').value='';
   document.getElementById('l-qty').value=1;
   setOrderType('market');
-  document.getElementById('ot-stoploss').style.display=type==='sell'?'flex':'none';
+  document.getElementById('ot-stoploss').style.display=(type==='sell'&&(portfolio[sym]?.qty||0)>0)?'flex':'none';
   document.getElementById('modal').classList.add('open');
   updModal();
 }
@@ -778,8 +834,9 @@ function updLimitModal(){
 function updSLInfoBox(){
   if(!tradeState) return;
   const price=cache[tradeState.sym]?.price||0;
+  document.getElementById('stoploss-info-box').style.color='#fca5a5';
   document.getElementById('stoploss-info-box').innerHTML=
-    `🛑 <strong>STOP LOSS</strong> — Current: <span style="color:#fff">${fmtP(price)}</span>. Will automatically SELL when price <span style="color:#ef4444">falls to or below</span> your stop loss price. Set below ${fmtP(price)}.`;
+    `🛑 <strong style="color:#fff">STOP LOSS</strong> — Current: <span style="color:#f5a623;font-weight:700">${fmtP(price)}</span>. Auto-SELLS when price <span style="color:#ef4444;font-weight:700">falls to or below</span> your target. Must be below ${fmtP(price)}.`;
 }
 function updSLModal(){
   if(!tradeState) return;
@@ -876,18 +933,21 @@ function renderTable(){
     const up=d.change>=0,held=portfolio[s.sym]?.qty||0;
     const plo=limitOrders.filter(o=>o.sym===s.sym&&o.status==='pending').length;
     return`<tr>
-      <td><div class="sn">${s.sym}${held?` <span style="font-size:9px;background:#1a2a4a;color:#60a5fa;padding:1px 4px;border-radius:6px">×${held}</span>`:''}${plo?` <span style="font-size:9px;background:#1a0a2a;color:#c084fc;padding:1px 4px;border-radius:6px">🎯${plo}</span>`:''}</div>
-      <div class="sf">${s.full} <span style="color:${d.live?'#22c55e':d.src==='cached'?'#60a5fa':'#f5a623'}">${d.live?'●'+d.src:d.src==='cached'?'●cached':'●sim'}</span></div></td>
-      <td><div class="pr ${d.price===0?'m':up?'g':'r'}">${d.price>0?fmtP(d.price):'—'}</div></td>
+      <td style="min-width:120px">
+        <div class="sn">${s.sym}${held?` <span style="font-size:9px;background:#1a2a4a;color:#60a5fa;padding:1px 4px;border-radius:6px">×${held}</span>`:''}${plo?` <span style="font-size:9px;background:#1a0a2a;color:#c084fc;padding:1px 4px;border-radius:6px">🎯${plo}</span>`:''}</div>
+        <div style="font-size:10px;margin-top:3px;letter-spacing:0.2px">
+          <span style="background:#052e16;color:#4ade80;padding:1px 5px;border-radius:3px;font-weight:700;margin-right:4px">H ${fmtP(d.high52)}</span><span style="background:#1c0707;color:#f87171;padding:1px 5px;border-radius:3px;font-weight:700">L ${fmtP(d.low52)}</span>
+        </div>
+        <div class="sf" style="margin-top:3px">${s.full} <span style="color:${d.live?'#22c55e':d.src==='cached'?'#60a5fa':'#f5a623'}">${d.live?'●live':d.src==='cached'?'●cached':'●sim'}</span></div>
+      </td>
+      <td><div class="pr ${d.price===0?'m':up?'g':'r'}" style="white-space:nowrap">${d.price>0?fmtP(d.price):'—'}</div></td>
       <td><span class="chg ${up?'up':'dn'}">${up?'▲':'▼'}${Math.abs(d.change).toFixed(2)}%</span></td>
-      <td><span style="font-size:11px;color:#b0c4de;font-weight:600">${fmtP(d.prevClose)}</span></td>
-      <td><span style="font-size:10px;color:#c0d0e8;line-height:1.7"><span style="color:#4ade80">H:</span>${fmtP(d.high52)}<br><span style="color:#f87171">L:</span>${fmtP(d.low52)}</span></td>
       <td><span class="sbdg">${s.sec}</span></td>
-      <td style="display:flex;gap:4px;flex-wrap:wrap;align-items:center">
-        <button class="btn bbuy" onclick="openModal('${s.sym}','buy')">BUY</button>
-        ${held?`<button class="btn bsell" onclick="openModal('${s.sym}','sell')">SELL</button>`:''}
-        ${held?`<button class="btn" style="background:#7f1d1d;color:#fca5a5;border:1px solid #991b1b" onclick="openModal('${s.sym}','sell');setTimeout(()=>setOrderType('stoploss'),60)" title="Stop Loss">🛑</button>`:''}
-        <button class="btn blimit" onclick="openModal('${s.sym}','buy');setTimeout(()=>setOrderType('limit'),60)" title="Limit Order">🎯</button>
+      <td style="white-space:nowrap">
+        <button class="btn bbuy" onclick="openModal('${s.sym}','buy')" style="padding:6px 10px">BUY</button>
+        ${held?`<button class="btn bsell" onclick="openModal('${s.sym}','sell')" style="padding:6px 10px">SELL</button>`:''}
+        ${held?`<button class="btn" style="background:#7f1d1d;color:#fca5a5;border:1px solid #991b1b;padding:6px 8px" onclick="openModal('${s.sym}','sell');setTimeout(()=>setOrderType('stoploss'),60)" title="Stop Loss">🛑</button>`:''}
+        <button class="btn blimit" onclick="openModal('${s.sym}','buy');setTimeout(()=>setOrderType('limit'),60)" style="padding:6px 8px" title="Limit Order">🎯</button>
       </td></tr>`;
   }).join('')||`<tr><td colspan="7" class="empty">No results</td></tr>`;
 }
@@ -1061,6 +1121,111 @@ function showSec(id,btn){
   renderAll();
 }
 
+// ── CHARTS ENGINE — TradingView Widget ─────────────────────────────────
+let chartSym = null;
+let tvWidget = null;
+
+// Quick picks list
+const CHART_QUICK_PICKS = [
+  'RELIANCE','TCS','HDFCBANK','INFY','SBIN','ICICIBANK','BAJFINANCE',
+  'BHARTIARTL','ADANIENT','ITC','WIPRO','AXISBANK','TATAMOTORS','MARUTI',
+  'ZOMATO','HAL','ADANIPORTS','BEL','IRFC','RVNL','M&M','TITAN','HCLTECH',
+  'SUNPHARMA','KOTAKBANK'
+];
+
+// Render quick pick buttons on boot
+function renderChartQuickPicks(){
+  document.getElementById('chart-quick-picks').innerHTML =
+    CHART_QUICK_PICKS.map(s=>
+      `<button onclick="selectChartStock('${s}')" class="chart-qp-btn">${s}</button>`
+    ).join('');
+}
+
+function filterChartSearch(){
+  const q = document.getElementById('chart-search').value.toLowerCase().trim();
+  const res = document.getElementById('chart-search-results');
+  if(!q){ res.style.display='none'; return; }
+  const matches = STOCKS.filter(s=>
+    s.sym.toLowerCase().includes(q)||s.full.toLowerCase().includes(q)
+  ).slice(0,8);
+  if(!matches.length){ res.style.display='none'; return; }
+  res.style.display='block';
+  res.innerHTML = matches.map(s=>{
+    const d=cache[s.sym];
+    const up=d&&d.change>=0;
+    return`<div class="chart-srch-item" onclick="selectChartStock('${s.sym}')">
+      <div>
+        <div style="font-weight:700;color:#e2e8f0;font-size:12px">${s.sym}</div>
+        <div style="font-size:10px;color:#6b7fa8">${s.full}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:700;color:${d&&d.price>0?(up?'#22c55e':'#ef4444'):'#4a5878'};font-size:12px">${d&&d.price>0?fmtP(d.price):'—'}</div>
+        ${d?`<div style="font-size:10px;color:${up?'#22c55e':'#ef4444'}">${up?'▲':'▼'}${Math.abs(d.change).toFixed(2)}%</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectChartStock(sym){
+  chartSym = sym;
+  document.getElementById('chart-search').value = sym;
+  document.getElementById('chart-search-results').style.display='none';
+
+  // Update stock header
+  const s = STOCKS.find(x=>x.sym===sym);
+  const d = cache[sym];
+  document.getElementById('chart-stock-header').style.display='block';
+  document.getElementById('chart-sym-label').textContent = sym + (s?' · '+s.full:'');
+  if(d&&d.price>0){
+    const up=d.change>=0;
+    document.getElementById('chart-price-label').textContent = fmtP(d.price);
+    document.getElementById('chart-price-label').style.color = up?'#22c55e':'#ef4444';
+    document.getElementById('chart-chg-label').textContent = (up?'▲':'▼')+Math.abs(d.change).toFixed(2)+'%';
+    document.getElementById('chart-chg-label').style.background = up?'#052e16':'#1c0707';
+    document.getElementById('chart-chg-label').style.color = up?'#22c55e':'#ef4444';
+  }
+
+  loadTVChart(sym);
+}
+
+function loadTVChart(sym){
+  document.getElementById('chart-placeholder').style.display='none';
+  document.getElementById('tv-chart-container').style.display='block';
+
+  const container = document.getElementById('tradingview_chart');
+  container.innerHTML = '';
+
+  // Use iframe embed — works on all hosts including GitHub Pages
+  // TradingView officially supports this format
+  const tvSym = encodeURIComponent(`NSE:${sym}`);
+  const params = [
+    `symbol=${tvSym}`,
+    `interval=D`,
+    `timezone=Asia%2FKolkata`,
+    `theme=dark`,
+    `style=1`,
+    `locale=in`,
+    `backgroundColor=%2307090f`,
+    `gridColor=%230d1220`,
+    `hide_top_toolbar=0`,
+    `hide_legend=0`,
+    `allow_symbol_change=1`,
+    `save_image=0`,
+    `calendar=0`,
+    `hide_volume=0`,
+    `support_host=https%3A%2F%2Fwww.tradingview.com`,
+  ].join('&');
+
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.tradingview.com/widgetembed/?${params}`;
+  iframe.style.cssText = 'width:100%;height:500px;border:none;display:block';
+  iframe.setAttribute('allowtransparency', 'true');
+  iframe.setAttribute('scrolling', 'no');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('frameborder', '0');
+  container.appendChild(iframe);
+}
+
 function openSearch(){
   const overlay=document.getElementById('search-overlay');
   overlay.style.display='flex';
@@ -1141,6 +1306,7 @@ if(_savedCount > 0){
 }
 
 renderAll();
+renderChartQuickPicks();
 
 // Step 3: fetch fresh live prices (overwrites cache, saves back to localStorage)
 loadPrices();
