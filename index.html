@@ -28,27 +28,27 @@
     .dg{background:#22c55e;animation:bl 2s infinite}.dr{background:#ef4444}.dy{background:#f5a623;animation:bl 1s infinite}
     @keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
     .ticker{background:#040610;border-bottom:1px solid #0f1828;padding:5px 0;overflow:hidden;white-space:nowrap;min-height:26px}
-    .ti-inner{display:inline-flex;gap:28px;animation:sc 60s linear infinite}
+    .ti-inner{display:inline-flex;gap:36px;animation:sc 120s linear infinite}
     @keyframes sc{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     .main{padding:12px;padding-bottom:40px}
     .sec{display:none}.sec.on{display:block}
     .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
     .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
     .card{background:#0b0f1c;border:1px solid #1a2235;border-radius:7px;padding:12px}
-    .ct{font-size:9px;color:#4a5878;letter-spacing:1.5px;margin-bottom:5px}
+    .ct{font-size:9px;color:#7a94b8;letter-spacing:1.5px;margin-bottom:5px}
     .cv{font-size:19px;font-weight:700}
-    .g{color:#22c55e}.r{color:#ef4444}.y{color:#f5a623}.b{color:#4f8ef7}.w{color:#c9d1e0}.m{color:#4a5878}
+    .g{color:#22c55e}.r{color:#ef4444}.y{color:#f5a623}.b{color:#4f8ef7}.w{color:#c9d1e0}.m{color:#8ba4c8}
     .srch{width:100%;background:#0e1526;border:1px solid #1a2235;border-radius:5px;padding:8px 12px;color:#c9d1e0;font-size:14px;font-family:inherit;margin-bottom:8px;outline:none;-webkit-appearance:none}
     .srch:focus{border-color:#4f8ef7}
     .filters{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
-    .fbtn{padding:4px 10px;border-radius:4px;font-size:10px;background:#0e1526;border:1px solid #1a2235;color:#8ba4c8;cursor:pointer;font-family:inherit;touch-action:manipulation}
+    .fbtn{padding:4px 10px;border-radius:4px;font-size:10px;background:#0e1526;border:1px solid #1a2235;color:#a0b8d8;cursor:pointer;font-family:inherit;touch-action:manipulation}
     .fbtn.act{background:#1a2a4a;border-color:#4f8ef7;color:#4f8ef7}
     .tbl{width:100%;border-collapse:collapse;font-size:11px}
-    .tbl th{color:#4a5878;font-size:9px;letter-spacing:1px;padding:6px 8px;text-align:left;border-bottom:1px solid #1a2235;background:#0b0f1c;position:sticky;top:0}
+    .tbl th{color:#7a94b8;font-size:9px;letter-spacing:1px;padding:6px 8px;text-align:left;border-bottom:1px solid #1a2235;background:#0b0f1c;position:sticky;top:0}
     .tbl td{padding:8px 8px;border-bottom:1px solid #0d1220;vertical-align:middle}
     .tbl tr:hover td{background:#0d1220}
     .sn{font-weight:700;font-size:12px;color:#e2e8f0}
-    .sf{font-size:9px;color:#4a5878;margin-top:1px}
+    .sf{font-size:11px;color:#a0b4d0;margin-top:3px;letter-spacing:0.2px}
     .pr{font-weight:700;font-size:12px}
     .chg{display:inline-flex;align-items:center;padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600}
     .up{background:#052e16;color:#22c55e}.dn{background:#1c0707;color:#ef4444}
@@ -61,7 +61,7 @@
     .mod{background:#0e1526;border:1px solid #2a3d5e;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
     .mod h3{font-size:14px;margin-bottom:12px;color:#e2e8f0}
     .mr{display:flex;justify-content:space-between;margin-bottom:7px;font-size:11px}
-    .mk{color:#4a5878}.mv{font-weight:700}
+    .mk{color:#7a94b8}.mv{font-weight:700}
     .qi{width:100%;background:#07090f;border:1px solid #1a2235;border-radius:5px;padding:10px 12px;color:#c9d1e0;font-size:16px;font-family:inherit;margin:8px 0;outline:none;-webkit-appearance:none}
     .qi:focus{border-color:#4f8ef7}
     .cbox{background:#07090f;border:1px solid #1a2235;border-radius:6px;padding:11px;margin:8px 0;font-size:11px}
@@ -90,6 +90,7 @@
     .lo-pending{background:#1a2a0a;color:#86efac;border:1px solid #2a4a1a}
     .lo-executed{background:#0a1a2a;color:#60a5fa;border:1px solid #1a3a5a}
     .lo-cancelled{background:#2a1a1a;color:#f87171;border:1px solid #5a2a2a}
+    .lo-stoploss{background:#2a0a0a;color:#fca5a5;border:1px solid #7f1d1d}
     .lo-cancel-btn{padding:6px 12px;border-radius:4px;font-size:11px;background:#2a1a1a;color:#f87171;border:1px solid #5a2a2a;cursor:pointer;font-family:inherit;touch-action:manipulation;white-space:nowrap}
     /* Mobile responsive */
     @media(max-width:480px){
@@ -111,13 +112,13 @@
 </head>
 <body>
 <div class="app">
- 
+
 <!-- Install hint bar (shows on mobile) -->
 <div class="install-bar" id="install-bar" style="display:none">
   <span>📱 Add to Home Screen for app-like experience</span>
   <button onclick="document.getElementById('install-bar').style.display='none'">Got it</button>
 </div>
- 
+
 <div class="topbar">
   <div class="logo">TRADE<span>INDIA</span><span style="font-size:9px;background:#1a2a4a;color:#60a5fa;padding:2px 7px;border-radius:10px;margin-left:6px">PAPER TRADING</span></div>
   <div class="tr">
@@ -127,24 +128,43 @@
     <div class="mbadge mclosed" id="mbadge">...</div>
   </div>
 </div>
- 
+
 <div class="sbar">
   <span class="dot dy" id="sdot"></span><span id="stxt">Initialising...</span>
   <span style="margin-left:auto;font-size:9px" id="stime"></span>
 </div>
- 
+
 <div class="ticker"><div class="ti-inner" id="ticker"><span style="font-size:10px;color:#4a5878;padding:0 14px">Loading live prices...</span></div></div>
- 
+
 <div class="nav">
   <button class="nb active" onclick="showSec('market',this)">MARKET</button>
   <button class="nb" onclick="showSec('portfolio',this)">PORTFOLIO</button>
   <button class="nb" onclick="showSec('limitorders',this)">LIMITS <span id="lo-nav-badge" style="background:#1a2a4a;color:#60a5fa;padding:1px 5px;border-radius:8px;font-size:9px;margin-left:3px">0</span></button>
   <button class="nb" onclick="showSec('history',this)">HISTORY</button>
   <button class="nb" onclick="showSec('charges',this)">CHARGES</button>
+  <button class="nb" onclick="openSearch()" style="margin-left:auto;padding:9px 14px" title="Search stocks">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8ba4c8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+  </button>
 </div>
- 
+
+<!-- Search Overlay -->
+<div id="search-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,6,16,0.97);z-index:500;flex-direction:column;padding:0">
+  <div style="background:#0b0f1c;border-bottom:1px solid #1a2235;padding:12px 14px;display:flex;align-items:center;gap:10px">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input id="search-input" class="srch" placeholder="Search stocks, symbols, sectors..." 
+      style="margin:0;flex:1;border:none;background:transparent;font-size:15px;padding:4px 0;border-radius:0"
+      oninput="renderSearchResults()" autofocus/>
+    <button onclick="closeSearch()" style="background:none;border:none;color:#8ba4c8;font-size:22px;cursor:pointer;padding:0 4px;line-height:1">×</button>
+  </div>
+  <div id="search-results" style="overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch"></div>
+</div>
+
 <div class="main">
- 
+
 <!-- ── MARKET ── -->
 <div class="sec on" id="sec-market">
   <div class="cbanner" id="cbanner"><span>⏸</span><span>Market closed. Prices frozen at last close. NSE/BSE: Mon–Fri 9:15 AM–3:30 PM IST. Limit orders queue until market reopens.</span></div>
@@ -161,8 +181,8 @@
       <div class="ct" style="margin:0">NSE/BSE STOCKS <span class="m" id="scnt" style="font-size:9px"></span></div>
       <span style="margin-left:auto;font-size:9px;color:#4a5878" id="lupd"></span>
     </div>
-    <input class="srch" id="srch" type="text" placeholder="Search symbol or name..." oninput="renderTable()"/>
-    <div class="filters" id="filters"></div>
+    <input id="srch" type="hidden" value=""/>
+    <div class="filters" id="filters" style="display:none"></div>
     <div class="tw">
       <table class="tbl">
         <thead><tr><th>STOCK</th><th>PRICE</th><th>CHG%</th><th>PREV CLOSE</th><th>52W H/L</th><th>SECTOR</th><th>ACTIONS</th></tr></thead>
@@ -171,7 +191,7 @@
     </div>
   </div>
 </div>
- 
+
 <!-- ── PORTFOLIO ── -->
 <div class="sec" id="sec-portfolio">
   <div class="g3">
@@ -181,7 +201,7 @@
   </div>
   <div class="card"><div class="ct" style="margin-bottom:10px">YOUR HOLDINGS</div><div id="holdings"></div></div>
 </div>
- 
+
 <!-- ── LIMIT ORDERS ── -->
 <div class="sec" id="sec-limitorders">
   <div class="card" style="margin-bottom:12px;background:#0a1628;border-color:#1e3560">
@@ -194,12 +214,12 @@
   </div>
   <div class="card"><div class="ct" style="margin-bottom:10px">ALL LIMIT ORDERS <span id="lo-count" class="b"></span></div><div id="lo-list"><div class="empty">No limit orders yet.</div></div></div>
 </div>
- 
+
 <!-- ── HISTORY ── -->
 <div class="sec" id="sec-history">
   <div class="card"><div class="ct" style="margin-bottom:10px">TRADE HISTORY</div><div id="hist"></div></div>
 </div>
- 
+
 <!-- ── CHARGES ── -->
 <div class="sec" id="sec-charges">
   <div class="card" style="margin-bottom:12px">
@@ -229,10 +249,10 @@
     <div id="sout" style="display:none" class="cbox"></div>
   </div>
 </div>
- 
+
 </div><!-- end main -->
 </div><!-- end app -->
- 
+
 <!-- TRADE MODAL -->
 <div class="mov" id="modal">
   <div class="mod">
@@ -241,20 +261,21 @@
       <button onclick="closeModal()" style="background:none;border:none;color:#4a5878;font-size:20px;cursor:pointer;padding:0 4px;line-height:1">×</button>
     </div>
     <div class="otype">
-      <button class="otype-btn active" id="ot-market" onclick="setOrderType('market')">⚡ MARKET ORDER</button>
-      <button class="otype-btn" id="ot-limit" onclick="setOrderType('limit')">🎯 LIMIT ORDER</button>
+      <button class="otype-btn active" id="ot-market" onclick="setOrderType('market')">⚡ MARKET</button>
+      <button class="otype-btn" id="ot-limit" onclick="setOrderType('limit')">🎯 LIMIT</button>
+      <button class="otype-btn" id="ot-stoploss" onclick="setOrderType('stoploss')">🛑 STOP LOSS</button>
     </div>
     <div class="mr"><span class="mk">Stock</span><span class="mv w" id="m-sn">-</span></div>
     <div class="mr"><span class="mk">Current Price</span><span class="mv" id="m-price">-</span></div>
     <div class="mr"><span class="mk">Balance</span><span class="mv g" id="m-bal">-</span></div>
     <div class="mr" id="m-hr" style="display:none"><span class="mk">You Hold</span><span class="mv b" id="m-hold">-</span></div>
- 
+
     <div id="market-ui">
       <label style="font-size:9px;color:#4a5878;letter-spacing:1px">QUANTITY</label>
       <input class="qi" type="number" inputmode="numeric" id="m-qty" min="1" value="1" oninput="updModal()"/>
       <div class="cbox" id="m-ch"></div>
     </div>
- 
+
     <div id="limit-ui" style="display:none">
       <div id="limit-info-box" class="limit-info"></div>
       <label style="font-size:9px;color:#4a5878;letter-spacing:1px">YOUR TARGET PRICE (₹)</label>
@@ -263,16 +284,25 @@
       <input class="qi" type="number" inputmode="numeric" id="l-qty" min="1" value="1" oninput="updLimitModal()"/>
       <div class="cbox" id="l-ch"></div>
     </div>
- 
+
+    <div id="stoploss-ui" style="display:none">
+      <div id="stoploss-info-box" class="limit-info" style="border-color:#ef4444;background:#1c0707;color:#f87171"></div>
+      <label style="font-size:9px;color:#4a5878;letter-spacing:1px">STOP LOSS PRICE (₹) — SELL IF PRICE FALLS TO</label>
+      <input class="qi" type="number" inputmode="decimal" id="sl-price" step="0.05" placeholder="Enter stop loss price..." oninput="updSLModal()"/>
+      <label style="font-size:9px;color:#4a5878;letter-spacing:1px">QUANTITY</label>
+      <input class="qi" type="number" inputmode="numeric" id="sl-qty" min="1" value="1" oninput="updSLModal()"/>
+      <div class="cbox" id="sl-ch"></div>
+    </div>
+
     <div class="mbtns">
       <button class="ccancel" onclick="closeModal()">CANCEL</button>
       <button id="m-confirm" onclick="doTrade()">CONFIRM</button>
     </div>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"></div>
- 
+
 <script>
 const STOCKS=[
   // ── NIFTY 50 — All prices verified from Dhan, March 13 2026 ─────────────
@@ -326,7 +356,7 @@ const STOCKS=[
   {sym:'HDFCLIFE',    full:'HDFC Life Insurance',          sec:'Insurance',    bp:635},
   {sym:'ZOMATO',      full:'Zomato (Eternal Ltd)',         sec:'Consumer',     bp:195},
   {sym:'ADANIENT',    full:'Adani Enterprises',            sec:'Conglomerate', bp:2130},
- 
+
   // ── NIFTY NEXT 50 — All prices verified from Dhan, March 13 2026 ─────────
   {sym:'LICI',        full:'LIC of India',                 sec:'Insurance',    bp:817},
   {sym:'HAL',         full:'Hindustan Aeronautics',        sec:'Defence',      bp:4330},
@@ -376,7 +406,7 @@ const STOCKS=[
   {sym:'FEDERALBNK',  full:'Federal Bank',                 sec:'Banking',      bp:172},
   {sym:'IDFCFIRSTB',  full:'IDFC First Bank',              sec:'Banking',      bp:59},
   {sym:'YESBANK',     full:'Yes Bank',                     sec:'Banking',      bp:16},
- 
+
   // ── POPULAR F&O & ACTIVELY TRADED STOCKS ─────────────────────────────────
   {sym:'ASIANPAINT',  full:'Asian Paints',                 sec:'Consumer',     bp:2175},
   {sym:'DABUR',       full:'Dabur India',                  sec:'FMCG',         bp:489},
@@ -500,28 +530,28 @@ const STOCKS=[
   {sym:'CLEAN',       full:'Clean Science & Tech',         sec:'Chemicals',    bp:1261},
   {sym:'PCBL',        full:'PCBL Ltd',                     sec:'Chemicals',    bp:345},
 ];
- 
+
 let balance=10000,portfolio={},tradeHist=[],cache={},limitOrders=[],tradeState=null,activeFilter='All',orderType='market';
- 
+
 function isOpen(){const ist=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));const d=ist.getDay(),h=ist.getHours(),m=ist.getMinutes(),mins=h*60+m;return d>=1&&d<=5&&mins>=555&&mins<930;}
 function getIST(){return new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});}
 function fmtP(n){return '₹'+Number(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtC(n){return '₹'+Math.abs(Number(n)).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
- 
+
 // ── LOCAL STORAGE PRICE CACHE ──────────────────────────
 // Saves live prices to localStorage every time we fetch them.
 // On next open, loads those saved prices as fallback instead of
 // hardcoded bp values — so the app is always self-updating.
 const LS_KEY = 'tradeindia_prices_v1';
 const LS_MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 days
- 
+
 function savePricesToStorage(priceMap){
   try{
     const payload = {ts: Date.now(), prices: priceMap};
     localStorage.setItem(LS_KEY, JSON.stringify(payload));
   }catch(e){}
 }
- 
+
 function loadPricesFromStorage(){
   try{
     const raw = localStorage.getItem(LS_KEY);
@@ -532,7 +562,7 @@ function loadPricesFromStorage(){
     return payload.prices; // {SYM: {price, prevClose, change, high52, low52}}
   }catch(e){ return null; }
 }
- 
+
 function simPrice(s){
   // Priority: localStorage cache → hardcoded bp fallback (Dhan-verified prices)
   const saved=_savedPrices&&_savedPrices[s.sym];
@@ -556,19 +586,19 @@ function simPrice(s){
   // bp:0 means stock was added without a known price
   return{price:0,prevClose:0,change:0,high52:0,low52:0,live:false,src:'loading'};
 }
- 
+
 // ── PRICE ENGINE — TradingView Scanner via Cloudflare Worker ────────────
 // Cloudflare Worker calls TradingView scanner server-side — same prices as in.tradingview.com
 const WORKER_URL = 'https://curly-mouse-0d68.dikshantchhalani2-0.workers.dev';
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
 async function loadPrices(){
   // Apply any cached prices immediately for instant display
   STOCKS.forEach(s=>{
@@ -580,24 +610,24 @@ async function loadPrices(){
     }
   });
   renderAll();
- 
+
   // Always fetch fresh prices from NSE — even when market is closed
   // This ensures we always have the latest closing price, not stale cached data
   // After fetch completes, market closed = prices freeze until market reopens
- 
+
   // ── ONE request fetches ALL stocks via NSE India scanner ──
   document.getElementById('pdot').className='dot dy';
-  document.getElementById('ptxt').textContent='Fetching live prices from TradingView...';
+  document.getElementById('ptxt').textContent='Fetching live prices from NSE India...';
   document.getElementById('src-badge').textContent='fetching...';
   document.getElementById('src-badge').style.color='#f5a623';
- 
+
   let liveC=0;const tot=STOCKS.length;const freshPrices={};
- 
+
   try{
-    const r=await fetch(`${WORKER_URL}/all`,{signal:AbortSignal.timeout(20000)});
+    const r=await fetch(`${WORKER_URL}/all`,{signal:AbortSignal.timeout(30000)});
     if(!r.ok) throw new Error('Worker HTTP '+r.status);
     const data=await r.json();
- 
+
     STOCKS.forEach(s=>{
       const d=data[s.sym];
       if(d&&d.ok&&d.price>0){
@@ -607,14 +637,14 @@ async function loadPrices(){
         liveC++;
       }
     });
- 
+
     // Save to localStorage
     if(liveC>0){
       const existing=loadPricesFromStorage()||{};
       savePricesToStorage({...existing,...freshPrices});
       Object.assign(_savedPrices,freshPrices);
     }
- 
+
     const src=liveC>0?data[Object.keys(data)[0]]?.src||'NSE India':'fallback';
     const mktOpen=isOpen();
     document.getElementById('pfill').style.width='100%';
@@ -623,7 +653,7 @@ async function loadPrices(){
     document.getElementById('src-badge').textContent=liveC>tot*0.8?`${liveC} live`:`${liveC} live/${tot-liveC} cached`;
     document.getElementById('src-badge').style.color=liveC>tot*0.8?'#22c55e':'#f5a623';
     document.getElementById('lupd').textContent='Updated '+getIST();
- 
+
   }catch(e){
     // Worker failed — use cached prices
     document.getElementById('ptxt').textContent=`Worker unavailable · using cached prices · ${getIST()}`;
@@ -631,10 +661,10 @@ async function loadPrices(){
     document.getElementById('src-badge').textContent='cached';
     document.getElementById('src-badge').style.color='#f5a623';
   }
- 
+
   renderAll();
 }
- 
+
 function calcCharges(price,qty,type){
   const val=price*qty,stt=val*0.001,exc=val*0.0000345,sebi=val*0.000001,ipft=val*0.000001;
   const stamp=type==='buy'?val*0.00015:0,dp=type==='sell'?15.93:0,gst=(exc+sebi)*0.18;
@@ -652,12 +682,12 @@ ${type==='sell'?`<div class="crow"><span class="mk">DP Charges</span><span class
 <div class="crow"><span style="color:#ef4444">Total Charges</span><span style="color:#ef4444">${fmtC(ch.total)}</span></div>
 <div class="crow"><span>Net ${type==='buy'?'Cost':'Proceeds'}</span><span style="color:${type==='buy'?'#f5a623':'#22c55e'};font-size:13px">${fmtC(type==='buy'?ch.val+ch.total:ch.val-ch.total)}</span></div>`;
 }
- 
+
 function checkLimitOrders(){
   let exec=0;
   limitOrders.filter(o=>o.status==='pending').forEach(o=>{
     const price=cache[o.sym]?.price;if(!price) return;
-    const hit=(o.type==='buy'&&price<=o.targetPrice)||(o.type==='sell'&&price>=o.targetPrice);
+    const hit=(o.type==='buy'&&price<=o.targetPrice)||(o.type==='sell'&&!o.isStopLoss&&price>=o.targetPrice)||(o.isStopLoss&&price<=o.targetPrice);
     if(!hit) return;
     const ch=calcCharges(price,o.qty,o.type);
     if(o.type==='buy'){
@@ -675,12 +705,12 @@ function checkLimitOrders(){
       tradeHist.push({type:'sell',sym:o.sym,qty:o.qty,price,charges:ch.total,net:ch.val-ch.total,time:getIST(),note:'Limit order'});
     }
     o.status='executed';o.executedAt=price;o.executedTime=getIST();exec++;
-    showToast(`🎯 Limit ${o.type.toUpperCase()} executed!\n${o.qty}×${o.sym} @ ${fmtP(price)}`,'b');
+    showToast(o.isStopLoss?`🛑 Stop Loss triggered!\n${o.qty}×${o.sym} sold @ ${fmtP(price)}`:`🎯 Limit ${o.type.toUpperCase()} executed!\n${o.qty}×${o.sym} @ ${fmtP(price)}`,o.isStopLoss?'r':'b');
   });
   if(exec>0) renderAll();
   updLoBadge();
 }
- 
+
 function updLoBadge(){
   const p=limitOrders.filter(o=>o.status==='pending').length;
   document.getElementById('tb-pending').textContent=p;
@@ -688,21 +718,24 @@ function updLoBadge(){
   document.getElementById('lo-count').textContent=`(${limitOrders.length} total)`;
   document.getElementById('pill-pending').style.display=p>0?'block':'none';
 }
- 
+
 function setOrderType(type){
   orderType=type;
   document.getElementById('ot-market').className='otype-btn'+(type==='market'?' active':'');
   document.getElementById('ot-limit').className='otype-btn'+(type==='limit'?' active':'');
+  document.getElementById('ot-stoploss').className='otype-btn'+(type==='stoploss'?' active':'');
   document.getElementById('market-ui').style.display=type==='market'?'block':'none';
   document.getElementById('limit-ui').style.display=type==='limit'?'block':'none';
+  document.getElementById('stoploss-ui').style.display=type==='stoploss'?'block':'none';
   if(type==='limit'&&tradeState) updLimitInfoBox();
+  if(type==='stoploss'&&tradeState) updSLInfoBox();
   const btn=document.getElementById('m-confirm');
   if(tradeState){
-    btn.textContent=type==='market'?'CONFIRM '+tradeState.type.toUpperCase():'PLACE LIMIT ORDER';
-    btn.className=type==='market'?(tradeState.type==='buy'?'cbuy':'csell'):'climit';
+    btn.textContent=type==='market'?'CONFIRM '+tradeState.type.toUpperCase():type==='limit'?'PLACE LIMIT ORDER':'SET STOP LOSS';
+    btn.className=type==='market'?(tradeState.type==='buy'?'cbuy':'csell'):type==='limit'?'climit':'csell';
   }
 }
- 
+
 function updLimitInfoBox(){
   if(!tradeState) return;
   const price=cache[tradeState.sym]?.price||0;
@@ -710,7 +743,7 @@ function updLimitInfoBox(){
     ?`<span class="y">▲ LIMIT BUY</span> — Current: <span class="w">${fmtP(price)}</span>. Will execute when price <span class="g">drops to or below</span> your target. Set target below ${fmtP(price)}.`
     :`<span class="r">▼ LIMIT SELL</span> — Current: <span class="w">${fmtP(price)}</span>. Will execute when price <span class="g">rises to or above</span> your target. Set target above ${fmtP(price)}.`;
 }
- 
+
 function openModal(sym,type){
   const s=STOCKS.find(x=>x.sym===sym);if(!s) return;
   const d=cache[sym];if(!d) return;
@@ -727,6 +760,7 @@ function openModal(sym,type){
   document.getElementById('l-price').value='';
   document.getElementById('l-qty').value=1;
   setOrderType('market');
+  document.getElementById('ot-stoploss').style.display=type==='sell'?'flex':'none';
   document.getElementById('modal').classList.add('open');
   updModal();
 }
@@ -741,10 +775,22 @@ function updLimitModal(){
   const qty=parseInt(document.getElementById('l-qty').value)||0;
   document.getElementById('l-ch').innerHTML=tp&&qty?chargesHTML(calcCharges(tp,qty,tradeState.type),tradeState.type):'';
 }
+function updSLInfoBox(){
+  if(!tradeState) return;
+  const price=cache[tradeState.sym]?.price||0;
+  document.getElementById('stoploss-info-box').innerHTML=
+    `🛑 <strong>STOP LOSS</strong> — Current: <span style="color:#fff">${fmtP(price)}</span>. Will automatically SELL when price <span style="color:#ef4444">falls to or below</span> your stop loss price. Set below ${fmtP(price)}.`;
+}
+function updSLModal(){
+  if(!tradeState) return;
+  const sp=parseFloat(document.getElementById('sl-price').value)||0;
+  const qty=parseInt(document.getElementById('sl-qty').value)||0;
+  document.getElementById('sl-ch').innerHTML=sp&&qty?chargesHTML(calcCharges(sp,qty,'sell'),'sell'):'';
+}
 function closeModal(){document.getElementById('modal').classList.remove('open');tradeState=null;}
- 
-function doTrade(){if(!tradeState) return;orderType==='market'?doMarket():doLimit();}
- 
+
+function doTrade(){if(!tradeState) return;orderType==='market'?doMarket():orderType==='limit'?doLimit():doStopLoss();}
+
 function doMarket(){
   const{sym,type,price}=tradeState;
   const qty=parseInt(document.getElementById('m-qty').value);
@@ -770,7 +816,7 @@ function doMarket(){
   }
   closeModal();renderAll();
 }
- 
+
 function doLimit(){
   const{sym,type,s}=tradeState;
   const tp=parseFloat(document.getElementById('l-price').value);
@@ -789,7 +835,29 @@ function doLimit(){
   closeModal();renderAll();updLoBadge();
   showToast(`🎯 Limit ${type.toUpperCase()} placed!\n${qty}×${sym} · Target: ${fmtP(tp)}`+(type==='buy'?`\n${fmtC(reserved)} reserved`:''),'b');
 }
- 
+
+function doStopLoss(){
+  const{sym,type}=tradeState;
+  const sp=parseFloat(document.getElementById('sl-price').value);
+  const qty=parseInt(document.getElementById('sl-qty').value);
+  const cur=cache[sym]?.price||0;
+  if(!sp||sp<=0){showToast('Enter a valid stop loss price','r');return;}
+  if(!qty||qty<=0){showToast('Enter a valid quantity','r');return;}
+  if(sp>=cur){showToast(`Stop loss must be BELOW current price (${fmtP(cur)})
+Stop loss triggers when price FALLS to your level.`,'r');return;}
+  if(qty>(portfolio[sym]?.qty||0)){showToast('Not enough shares for this stop loss','r');return;}
+  limitOrders.push({
+    id:Date.now(),sym,type:'sell',targetPrice:sp,qty,
+    status:'pending',reserved:0,
+    placedAt:cur,placedTime:getIST(),
+    executedAt:null,executedTime:null,
+    note:'Stop Loss',isStopLoss:true
+  });
+  closeModal();renderAll();updLoBadge();
+  showToast(`🛑 Stop Loss set!
+${qty}×${sym} · Triggers if price falls to ${fmtP(sp)}`,'r');
+}
+
 function cancelLimitOrder(id){
   const o=limitOrders.find(x=>x.id===id);
   if(!o||o.status!=='pending') return;
@@ -798,7 +866,7 @@ function cancelLimitOrder(id){
   renderAll();updLoBadge();
   showToast(`Limit order cancelled. ${o.type==='buy'?fmtC(o.reserved)+' restored to balance':''}`,'y');
 }
- 
+
 function renderTable(){
   const q=(document.getElementById('srch')||{}).value?.toLowerCase().trim()||'';
   const stocks=STOCKS.filter(s=>(activeFilter==='All'||s.sec===activeFilter)&&(!q||s.sym.toLowerCase().includes(q)||s.full.toLowerCase().includes(q)||s.sec.toLowerCase().includes(q)));
@@ -812,23 +880,24 @@ function renderTable(){
       <div class="sf">${s.full} <span style="color:${d.live?'#22c55e':d.src==='cached'?'#60a5fa':'#f5a623'}">${d.live?'●'+d.src:d.src==='cached'?'●cached':'●sim'}</span></div></td>
       <td><div class="pr ${d.price===0?'m':up?'g':'r'}">${d.price>0?fmtP(d.price):'—'}</div></td>
       <td><span class="chg ${up?'up':'dn'}">${up?'▲':'▼'}${Math.abs(d.change).toFixed(2)}%</span></td>
-      <td><span class="m" style="font-size:10px">${fmtP(d.prevClose)}</span></td>
-      <td><span style="font-size:9px;color:#4a5878">H:${fmtP(d.high52)}<br>L:${fmtP(d.low52)}</span></td>
+      <td><span style="font-size:11px;color:#b0c4de;font-weight:600">${fmtP(d.prevClose)}</span></td>
+      <td><span style="font-size:10px;color:#c0d0e8;line-height:1.7"><span style="color:#4ade80">H:</span>${fmtP(d.high52)}<br><span style="color:#f87171">L:</span>${fmtP(d.low52)}</span></td>
       <td><span class="sbdg">${s.sec}</span></td>
       <td style="display:flex;gap:4px;flex-wrap:wrap;align-items:center">
         <button class="btn bbuy" onclick="openModal('${s.sym}','buy')">BUY</button>
         ${held?`<button class="btn bsell" onclick="openModal('${s.sym}','sell')">SELL</button>`:''}
+        ${held?`<button class="btn" style="background:#7f1d1d;color:#fca5a5;border:1px solid #991b1b" onclick="openModal('${s.sym}','sell');setTimeout(()=>setOrderType('stoploss'),60)" title="Stop Loss">🛑</button>`:''}
         <button class="btn blimit" onclick="openModal('${s.sym}','buy');setTimeout(()=>setOrderType('limit'),60)" title="Limit Order">🎯</button>
       </td></tr>`;
   }).join('')||`<tr><td colspan="7" class="empty">No results</td></tr>`;
 }
- 
+
 function renderFilters(){
   const secs=['All',...new Set(STOCKS.map(s=>s.sec))].sort((a,b)=>a==='All'?-1:a.localeCompare(b));
   document.getElementById('filters').innerHTML=secs.map(f=>`<button class="fbtn${activeFilter===f?' act':''}" onclick="setF('${f}')">${f}</button>`).join('');
 }
 function setF(f){activeFilter=f;renderFilters();renderTable();}
- 
+
 function renderSummary(){
   let inv=0,cur=0;
   for(const sym in portfolio){const h=portfolio[sym];const p=cache[sym]?.price||h.avgP;inv+=h.qty*h.avgP;cur+=h.qty*p;}
@@ -839,7 +908,7 @@ function renderSummary(){
   const cp=document.getElementById('c-pnl');cp.textContent=(pnl>=0?'+':'')+fmtP(pnl);cp.className='cv '+(pnl>=0?'g':'r');
   const tp=document.getElementById('tb-pnl');tp.textContent=(pnl>=0?'+':'')+fmtP(pnl);tp.className='pill-v '+(pnl>=0?'g':'r');
 }
- 
+
 function renderPortfolio(){
   let inv=0,cur=0;const keys=Object.keys(portfolio);
   if(!keys.length){document.getElementById('holdings').innerHTML='<div class="empty">No holdings yet. Head to Market tab.</div>';}
@@ -861,7 +930,7 @@ function renderPortfolio(){
   document.getElementById('pf-inv').textContent=fmtP(inv);document.getElementById('pf-cur').textContent=fmtP(cur);
   const pp=document.getElementById('pf-pnl');pp.textContent=(pnl>=0?'+':'')+fmtP(pnl);pp.className='cv '+(pnl>=0?'g':'r');
 }
- 
+
 function renderLimitOrders(){
   updLoBadge();
   if(!limitOrders.length){document.getElementById('lo-list').innerHTML='<div class="empty">No limit orders yet. Use the 🎯 button on any stock.</div>';return;}
@@ -872,7 +941,7 @@ function renderLimitOrders(){
       <div style="flex:1;min-width:0">
         <span style="font-weight:700;color:${o.type==='buy'?'#22c55e':'#ef4444'}">${o.type==='buy'?'▲':'▼'} LIMIT ${o.type.toUpperCase()}</span>
         <span style="color:#8ba4c8;margin-left:8px;font-weight:700">${o.sym}</span>
-        <span class="lo-badge lo-${o.status}" style="margin-left:8px">${o.status==='pending'?'⏳ PENDING':o.status==='executed'?'✅ EXECUTED':'❌ CANCELLED'}</span>
+        <span class="lo-badge lo-${o.isStopLoss?'stoploss':o.status}" style="margin-left:8px">${o.isStopLoss&&o.status==='pending'?'🛑 STOP LOSS':o.status==='pending'?'⏳ PENDING':o.status==='executed'?'✅ EXECUTED':'❌ CANCELLED'}</span>
         <div style="font-size:10px;color:#4a5878;margin-top:3px">${o.qty} shares · Target: <span class="b">${fmtP(o.targetPrice)}</span></div>
         <div style="font-size:10px;margin-top:2px;color:#4a5878">
           Placed @ ${fmtP(o.placedAt)} · ${o.placedTime}
@@ -885,7 +954,7 @@ function renderLimitOrders(){
     </div>`;
   }).join('');
 }
- 
+
 function renderHistory(){
   if(!tradeHist.length){document.getElementById('hist').innerHTML='<div class="empty">No trades yet.</div>';return;}
   document.getElementById('hist').innerHTML=[...tradeHist].reverse().map(h=>`
@@ -899,7 +968,7 @@ function renderHistory(){
       <div style="font-size:9px;color:#4a5878;min-width:60px;text-align:right">${h.time}</div>
     </div>`).join('');
 }
- 
+
 function renderTicker(){
   const items=STOCKS.filter(s=>cache[s.sym]).slice(0,50).map(s=>{
     const d=cache[s.sym],up=d.change>=0;
@@ -907,35 +976,59 @@ function renderTicker(){
   }).join('');
   if(items) document.getElementById('ticker').innerHTML=items+items;
 }
- 
+
 // Live index cache — starts with verified Mar 13 2026 closing values
 let indexCache={
-  'NIFTY 50':  {v:'23,151',c:'-2.06%',up:false},
-  'SENSEX':    {v:'74,563',c:'-1.93%',up:false},
-  'NIFTY BANK':{v:'53,757',c:'-2.44%',up:false},
-  'NIFTY IT':  {v:'29,071',c:'-1.72%',up:false}
+  'NIFTY 50':  {v:'23,151',c:'-2.06%',up:false,type:'index'},
+  'SENSEX':    {v:'74,563',c:'-1.93%',up:false,type:'index'},
+  'NIFTY BANK':{v:'53,757',c:'-2.44%',up:false,type:'index'},
+  'NIFTY IT':  {v:'29,071',c:'-1.72%',up:false,type:'index'},
+  'GOLD':      {v:'₹91,200',c:'+0.00%',up:true,type:'commodity',unit:'per 10g'},
+  'SILVER':    {v:'₹93,500',c:'+0.00%',up:true,type:'commodity',unit:'per kg'},
 };
- 
+
 async function fetchIndices(){
   try{
     const r=await fetch(`${WORKER_URL}/indices`,{signal:AbortSignal.timeout(8000)});
     if(!r.ok) return;
     const data=await r.json();
-    if(data['NIFTY 50'])    indexCache['NIFTY 50']   ={v:data['NIFTY 50'].value.toLocaleString('en-IN'),   c:(data['NIFTY 50'].change>=0?'+':'')+data['NIFTY 50'].change.toFixed(2)+'%',   up:data['NIFTY 50'].change>=0};
-    if(data['NIFTY BANK'])  indexCache['NIFTY BANK'] ={v:data['NIFTY BANK'].value.toLocaleString('en-IN'), c:(data['NIFTY BANK'].change>=0?'+':'')+data['NIFTY BANK'].change.toFixed(2)+'%', up:data['NIFTY BANK'].change>=0};
-    if(data['NIFTY IT'])    indexCache['NIFTY IT']   ={v:data['NIFTY IT'].value.toLocaleString('en-IN'),   c:(data['NIFTY IT'].change>=0?'+':'')+data['NIFTY IT'].change.toFixed(2)+'%',   up:data['NIFTY IT'].change>=0};
+    if(data['NIFTY 50'])   {const i=data['NIFTY 50'];   indexCache['NIFTY 50']   ={v:i.value.toLocaleString('en-IN'),c:(i.change>=0?'+':'')+i.change.toFixed(2)+'%',up:i.change>=0,type:'index'};}
+    if(data['NIFTY BANK']) {const i=data['NIFTY BANK']; indexCache['NIFTY BANK'] ={v:i.value.toLocaleString('en-IN'),c:(i.change>=0?'+':'')+i.change.toFixed(2)+'%',up:i.change>=0,type:'index'};}
+    if(data['NIFTY IT'])   {const i=data['NIFTY IT'];   indexCache['NIFTY IT']   ={v:i.value.toLocaleString('en-IN'),c:(i.change>=0?'+':'')+i.change.toFixed(2)+'%',up:i.change>=0,type:'index'};}
+    renderIndexCards();
+  }catch(e){}
+  // Fetch Gold & Silver from MCX via NSE bulk endpoint (GOLD & SILVERMIC)
+  try{
+    const r=await fetch(`${WORKER_URL}/commodity`,{signal:AbortSignal.timeout(8000)});
+    if(!r.ok) return;
+    const data=await r.json();
+    if(data.gold&&data.gold>0){
+      const prev=indexCache['GOLD']._prev||data.gold;
+      const chg=((data.gold-prev)/prev*100).toFixed(2);
+      indexCache['GOLD']={v:'₹'+data.gold.toLocaleString('en-IN'),c:(chg>=0?'+':'')+chg+'%',up:chg>=0,type:'commodity',unit:'per 10g',_prev:prev};
+    }
+    if(data.silver&&data.silver>0){
+      const prev=indexCache['SILVER']._prev||data.silver;
+      const chg=((data.silver-prev)/prev*100).toFixed(2);
+      indexCache['SILVER']={v:'₹'+data.silver.toLocaleString('en-IN'),c:(chg>=0?'+':'')+chg+'%',up:chg>=0,type:'commodity',unit:'per kg',_prev:prev};
+    }
     renderIndexCards();
   }catch(e){}
 }
- 
+
 function renderIndexCards(){
   const open=isOpen();
   document.getElementById('igrid').innerHTML=Object.entries(indexCache).map(([name,i])=>`
-    <div class="icard"><div style="font-size:9px;color:#4a5878;letter-spacing:1px;margin-bottom:4px">${name}</div>
-    <div style="font-size:15px;font-weight:700;color:#e2e8f0">${i.v}</div>
-    <div style="font-size:10px;font-weight:700;margin-top:2px;color:${i.up&&open?'#22c55e':open?'#ef4444':'#4a5878'}">${open?i.c:'Closed'}</div></div>`).join('');
+    <div class="icard" style="${i.type==='commodity'?'border-color:#2a2010;background:#0d0c08':''}" >
+      <div style="font-size:9px;color:${i.type==='commodity'?'#a07830':'#4a5878'};letter-spacing:1px;margin-bottom:4px;display:flex;align-items:center;gap:4px">
+        ${i.type==='commodity'?'<span style="font-size:10px">'+(name==='GOLD'?'🥇':'🥈')+'</span>':''}${name}
+      </div>
+      <div style="font-size:14px;font-weight:700;color:${i.type==='commodity'?'#f5c842':'#e2e8f0'}">${i.v}</div>
+      ${i.type==='commodity'?`<div style="font-size:9px;color:#6b5a30;margin-top:1px">${i.unit}</div>`:''}
+      <div style="font-size:10px;font-weight:700;margin-top:2px;color:${i.up?'#22c55e':'#ef4444'}">${i.type==='commodity'?i.c:open?i.c:'Closed'}</div>
+    </div>`).join('');
 }
- 
+
 function updateMarketStatus(){
   const open=isOpen();
   document.getElementById('mbadge').textContent=open?'● OPEN':'● CLOSED';
@@ -945,14 +1038,14 @@ function updateMarketStatus(){
   document.getElementById('stxt').textContent=`NSE/BSE · ${open?'Live Session':'Market Closed — Prices Frozen'} · Paper Trading`;
   document.getElementById('stime').textContent='IST '+getIST();
 }
- 
+
 function simC(){
   const v=parseFloat(document.getElementById('sv').value),t=document.getElementById('st').value;
   const out=document.getElementById('sout');
   if(!v||v<=0){out.style.display='none';return;}
   out.style.display='block';const ch=calcCharges(v,1,t);ch.val=v;out.innerHTML=chargesHTML(ch,t);
 }
- 
+
 function showToast(msg,cls){
   const t=document.getElementById('toast');
   t.textContent=msg;
@@ -960,41 +1053,98 @@ function showToast(msg,cls){
   t.style.borderColor=cls==='g'?'#16532d':cls==='r'?'#5c1a1a':cls==='b'?'#1e3560':'#78350f';
   t.classList.add('on');setTimeout(()=>t.classList.remove('on'),5000);
 }
- 
+
 function showSec(id,btn){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('sec-'+id).classList.add('on');btn.classList.add('active');
   renderAll();
 }
- 
+
+function openSearch(){
+  const overlay=document.getElementById('search-overlay');
+  overlay.style.display='flex';
+  setTimeout(()=>document.getElementById('search-input').focus(),100);
+  renderSearchResults();
+}
+function closeSearch(){
+  document.getElementById('search-overlay').style.display='none';
+  document.getElementById('search-input').value='';
+}
+function renderSearchResults(){
+  const q=document.getElementById('search-input').value.toLowerCase().trim();
+  const container=document.getElementById('search-results');
+  if(!q){
+    // Show sector filters as quick shortcuts when no query
+    const secs=[...new Set(STOCKS.map(s=>s.sec))].sort();
+    container.innerHTML=`
+      <div style="padding:14px 16px 8px;color:#7a94b8;font-size:10px;letter-spacing:1px">BROWSE BY SECTOR</div>
+      <div style="padding:0 16px 16px;display:flex;flex-wrap:wrap;gap:8px">
+        ${secs.map(sec=>`<button class="fbtn" onclick="document.getElementById('search-input').value='${sec}';renderSearchResults()" 
+          style="font-size:11px;padding:6px 14px;color:#a0b8d8;border-color:#1e3560">${sec}</button>`).join('')}
+      </div>
+      <div style="padding:14px 16px 8px;color:#7a94b8;font-size:10px;letter-spacing:1px">OR TYPE TO SEARCH</div>
+      <div style="padding:0 16px;color:#4a5878;font-size:12px">Symbol, company name, or sector — e.g. RELIANCE, Tata, Banking</div>`;
+    return;
+  }
+  const stocks=STOCKS.filter(s=>s.sym.toLowerCase().includes(q)||s.full.toLowerCase().includes(q)||s.sec.toLowerCase().includes(q));
+  if(!stocks.length){
+    container.innerHTML='<div class="empty">No stocks found for "'+q+'"</div>';
+    return;
+  }
+  container.innerHTML=stocks.map(s=>{
+    const d=cache[s.sym];
+    const up=d&&d.change>=0;
+    const held=portfolio[s.sym]?.qty||0;
+    return`<div style="padding:12px 16px;border-bottom:1px solid #0d1220;display:flex;align-items:center;gap:12px;cursor:pointer;active:background:#0d1220"
+      onclick="closeSearch();showSec('market',document.querySelector('.nb'));setTimeout(()=>{document.getElementById('srch').value='${s.sym}';renderTable();},100)">
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:13px;color:#e2e8f0">${s.sym}${held?` <span style="font-size:9px;background:#1a2a4a;color:#60a5fa;padding:1px 5px;border-radius:6px">×${held}</span>`:''}</div>
+        <div style="font-size:11px;color:#6b7fa8;margin-top:2px">${s.full}</div>
+        <div style="font-size:10px;margin-top:2px"><span class="sbdg">${s.sec}</span></div>
+      </div>
+      <div style="text-align:right;min-width:80px">
+        <div style="font-weight:700;font-size:13px;color:${d&&d.price>0?(up?'#22c55e':'#ef4444'):'#4a5878'}">${d&&d.price>0?fmtP(d.price):'—'}</div>
+        ${d?`<div style="font-size:10px;color:${up?'#22c55e':'#ef4444'}">${up?'▲':'▼'}${Math.abs(d.change).toFixed(2)}%</div>`:''}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <button class="btn bbuy" style="padding:5px 10px;font-size:10px" onclick="event.stopPropagation();closeSearch();openModal('${s.sym}','buy')">BUY</button>
+        ${held?`<button class="btn bsell" style="padding:5px 10px;font-size:10px" onclick="event.stopPropagation();closeSearch();openModal('${s.sym}','sell')">SELL</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Close search on Escape key
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeSearch();});
+
 function renderAll(){renderSummary();renderTable();renderFilters();renderPortfolio();renderLimitOrders();renderHistory();renderTicker();renderIndexCards();updateMarketStatus();}
- 
+
 // Show install hint on mobile
 if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
   setTimeout(()=>document.getElementById('install-bar').style.display='flex',2000);
 }
- 
+
 // ── BOOT ──────────────────────────────────────────────
 // Step 1: load any prices previously saved to localStorage
 const _savedPrices = loadPricesFromStorage() || {};
 const _savedCount  = Object.keys(_savedPrices).length;
- 
+
 // Step 2: seed cache — saved localStorage prices → else hardcoded bp fallback
 STOCKS.forEach(s=>{cache[s.sym]=simPrice(s);});
- 
+
 // Show user what we loaded from cache
 if(_savedCount > 0){
   document.getElementById('ptxt').textContent=`Loaded ${_savedCount} cached prices · fetching updates...`;
   document.getElementById('src-badge').textContent=`${_savedCount} cached`;
   document.getElementById('src-badge').style.color='#60a5fa';
 }
- 
+
 renderAll();
- 
+
 // Step 3: fetch fresh live prices (overwrites cache, saves back to localStorage)
 loadPrices();
- 
+
 setInterval(()=>{updateMarketStatus();document.getElementById('stime').textContent='IST '+getIST();},10000);
 setInterval(()=>checkLimitOrders(),5000);
 setInterval(()=>{if(isOpen()) loadPrices();},5000);
