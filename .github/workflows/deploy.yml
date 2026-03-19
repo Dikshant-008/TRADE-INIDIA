@@ -14,9 +14,13 @@ jobs:
           curl -L "https://gist.githubusercontent.com/Dikshant-008/c1dba97563f61c14c7ed95d9e2e154e2/raw/index.html" -o index.html
           echo "Downloaded $(wc -c < index.html) bytes"
 
+      - name: Write _headers file for CSP
+        run: |
+          printf '/*\n  Content-Security-Policy: default-src '"'"'self'"'"' '"'"'unsafe-inline'"'"' '"'"'unsafe-eval'"'"' https: data: blob:; frame-src https://www.tradingview.com https://s.tradingview.com https://in.tradingview.com; connect-src *; img-src * data: blob:;\n' > _headers
+
       - name: Commit and push
         run: |
           git config user.email "deploy@tradeindia.com"
           git config user.name "TradeIndia Deploy Bot"
-          git add index.html
-          git diff --staged --quiet && echo "No changes to deploy" || (git commit -m "Auto-deploy: update index.html" && git push)
+          git add index.html _headers
+          git diff --staged --quiet && echo "No changes to deploy" || (git commit -m "Auto-deploy: update index.html + CSP headers" && git push)
